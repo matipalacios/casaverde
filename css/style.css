@@ -1,0 +1,88 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: black;
+    /* text-transform: uppercase; */
+    font-size: 62.5% 1rem;
+    /* 1rem = 10px */
+}
+
+nav {
+    background-color: #e0dec3;
+    height: 15vh;
+}
+
+nav ul li {
+    margin: 0.5rem 0.1rem;
+    /* padding-left: 7rem; */
+    color: black;
+    font-size: 1.4rem;
+}
+
+#carrito {
+    margin: 0.5rem 0.1rem;
+}
+
+#carrito img {
+    width: 1.8rem;
+}
+
+footer {
+    background-color: #e0dec3;
+    height: 25vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+footer div ul li {
+    font-weight: 400;
+}
+
+.footer_medios-font {
+    font-size: 1.2rem;
+    margin-top: 1.3rem;
+}
+
+.margin_instagram {
+    margin-left: 1.5rem;
+}
+
+main {
+    background-color: #e0dec3;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.text_reset {
+    font-weight: 500;
+    text-transform: none;
+    font-size: 1.4rem;
+    text-align: justify;
+}
+
+.title_reset {
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+.subtitle {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.logo {
+    width: 7rem;
+}
+
+.logoNav {
+    width: 6rem;
+    margin-left: 2rem;
+}
