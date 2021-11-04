@@ -22,14 +22,23 @@ function comprarProducto(event) {
     } else {
         existe.agregarCantidad(1);
     }
+
     //Acción de agregado al carrito
-    Swal.fire({
-        width: '25rem',
-        icon: 'success',
-        iconColor: '#199c3c',
-        title: 'Producto agregado al carrito',
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
         showConfirmButton: false,
-        timer: 2000
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Agregado al carrito'
     })
 
     carritoUI(carrito);
@@ -110,35 +119,34 @@ function enviarCompra() {
             title: 'Su compra está siendo procesada',
             timer: 5000,
             timerProgressBar: true,
+            showCancelButton: true,
             didOpen: () => {
                 Swal.showLoading()
-                const b = Swal.getHtmlContainer().querySelector('b')
-                timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                }, 100)
             },
             willClose: () => {
-                clearInterval(timerInterval)
+                Swal.fire({
+                    width: '25rem',
+                    icon: 'success',
+                    iconColor: '#199c3c',
+                    title: 'Su compra ha sido realizada con éxito',
+                    timer: 2000
+                })
             }
         }).then((result) => {
             /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('I was closed by the timer')
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire({
+                    width: '25rem',
+                    icon: 'error',
+                    title: 'Su compra no pudo ser procesada',
+                    showConfirmButton: true,
+                })
             }
         })
 
         if (estado == "success") {
             $('#carritoProductos').empty();
             $('#carritoCantidad').html("0");
-
-            Swal.fire({
-                width: '25rem',
-                icon: 'success',
-                iconColor: '#199c3c',
-                title: 'Su compra ha sido realizada con éxito',
-                showConfirmButton: false,
-                timer: 2000
-            })
 
         } else {
             console.log('Los datos no se enviaron correctamente');
